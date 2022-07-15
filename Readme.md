@@ -22,9 +22,12 @@ db = PostgreSQL(host="127.0.0.1", user="root", passwd="", port=4306, db="test")
 db.insert("TableName", "Value-1", "Value-2", "Value-3")  # And ...
 
 #Read
+db.read("TableName")#Read all Values
+db.readAColumn("TableName",2)#Read third column
 db.readByIndex("TableName", 1, 1) #Enter index of table ex: [1][2]
 db.readFromID("TableName", "IdNumber") #Create a column in mysql named id
 db.readFromAValue("TableName", "Column", "ColumnValue") #without id
+
 
 db.updateACellByID(
     "TableName", "UpdateColumn", "UpdateValue", "Id"

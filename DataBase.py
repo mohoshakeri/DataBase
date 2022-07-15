@@ -29,6 +29,25 @@ class MySQL:
         except:
             return False
 
+    def read(self, table):
+        read = f"SELECT * FROM {table};"
+        try:
+            cursor.execute(read)
+            x = cursor.fetchall()
+            return x
+        except:
+            return False
+
+    def readAColumn(self, table, columnindex):
+        columnList = self.read(table)
+        if columnList == False:
+            return False
+        else:
+            result = []
+            for item in columnList:
+                result.append(item[columnindex])
+            return result
+
     def readByIndex(self, table, index1, index2):
         read = f"SELECT * FROM {table};"
         try:
@@ -152,6 +171,25 @@ class PostgreSQL:
             return True
         except:
             return False
+
+    def read(self, table):
+        read = f"SELECT * FROM {table};"
+        try:
+            cursor.execute(read)
+            x = cursor.fetchall()
+            return x
+        except:
+            return False
+
+    def readAColumn(self, table, columnindex):
+        columnList = self.read(table)
+        if columnList == False:
+            return False
+        else:
+            result = []
+            for item in columnList:
+                result.append(item[columnindex])
+            return result
 
     def readByIndex(self, table, index1, index2):
         read = f"SELECT * FROM {table};"
