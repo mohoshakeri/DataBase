@@ -1,7 +1,8 @@
-# MySQL
+# Get Started
 
 ```bash
  pip install pymysql
+ pip install psycopg
 ```
 
 #### Create DataBase in MySQL
@@ -10,9 +11,12 @@
 
 ```python
 from DataBase import MySQL
+from DataBase import PostgreSQL
 
 #Object
 db = MySQL(host="127.0.0.1", user="root", passwd="", port=4306, db="test")
+db = PostgreSQL(host="127.0.0.1", user="root", passwd="", port=4306, db="test")
+
 
 #Insert
 db.insert("TableName", "Value-1", "Value-2", "Value-3")  # And ...
