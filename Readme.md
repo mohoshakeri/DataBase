@@ -1,13 +1,19 @@
 # Get Started
 
+## 1- install packages
+
 ```bash
  pip install pymysql
  pip install psycopg
 ```
 
-#### Create DataBase in MySQL
+### 2- Create DataBase in MySQL or PostgreSQL
 
-#### Create a Table
+### 3- Create a Table
+
+### 4- Use Classes
+
+## TIP: if the functions return False amount ie there is a problem in SQL commands.
 
 ```python
 from DataBase import MySQL
@@ -22,16 +28,18 @@ db = PostgreSQL(host="127.0.0.1", user="root", passwd="", port=4306, db="test")
 db.insert("TableName", "Value-1", "Value-2", "Value-3")  # And ...
 
 #Read
-db.read("TableName")#Read all Values
-db.readAColumn("TableName",2)#Read third column
-db.readByIndex("TableName", 1, 1) #Enter index of table ex: [1][2]
-db.readFromID("TableName", "IdNumber") #Create a column in mysql named id
-db.readFromAValue("TableName", "Column", "ColumnValue") #without id
+db.read("TableName")# Return a touple contains all values
+db.readAColumn("TableName",2)# Return a list contains third column values
+db.readByIndex("TableName", 1, 2) # Return Value [1][2]
+
+# First create a column named id
+db.readFromID("TableName", "IdNumber") # Return a touple contains IDNumber value
+db.readFromAValue("TableName", "Column", "ColumnValue") # Return a touple contains ColumnValue
 
 
 db.updateACellByID(
     "TableName", "UpdateColumn", "UpdateValue", "Id"
-    )#Create a column in mysql named id
+    )#Update a cell by id
 
 db.updateACellByValue(
     "TableName", "UpdateColumn", "UpdateValue", "IdColumn", "IdColumnValue"
@@ -39,7 +47,7 @@ db.updateACellByValue(
 
 db.updateCellsByID(
     "TableName", "Id", UpdateColumn_1="UpdateValue-1", UpdateColumn_2="UpdateValue-2"
-)  # And ... #Create a column in mysql named id
+)  #Update some cells by id
 
 db.updateCellsByValue(
     "TableName",
@@ -47,12 +55,10 @@ db.updateCellsByValue(
     "IdColumnValue",
     UpdateColumn_1="UpdateValue-1",
     UpdateColumn_2="UpdateValue-2",
-) # And ... #without id
+) #without id
 
-db.deleteCellByID("TableName", "4") #Create a column in mysql named id
-db.deleteCellByValue("TableName", "name", "Ali") #without id
+db.deleteCellByID("TableName", "IDNumber") # Drop a cell contains IDNumber
+db.deleteCellByValue("TableName", "Column", "ColumnValue") #without id
 
 db.clear("TableName")
 ```
-
-### if the functions return False amount ie there is a problem in SQL commands.
