@@ -14,18 +14,18 @@ class MySQL:
     def clear(self, table):
         clear = f"TRUNCATE {table};"
         try:
-            cursor.execute(clear)
+            res = cursor.execute(clear)
             mydb.commit()
-            return True
+            return True if res == 1 else False
         except:
             return False
 
     def insert(self, table, *values):
         insert = f"INSERT INTO {table} VALUES {values};"
         try:
-            cursor.execute(insert)
+            res = cursor.execute(insert)
             mydb.commit()
-            return True
+            return True if res == 1 else False
         except:
             return False
 
@@ -80,64 +80,64 @@ class MySQL:
             f"UPDATE {table} SET {columnName} = '{value}' WHERE {table}.id = '{id}';"
         )
         try:
-            cursor.execute(update)
+            res = cursor.execute(update)
             mydb.commit()
-            return True
+            return True if res == 1 else False
         except:
             return False
 
     def updateACellByValue(self, table, columnName, value, IDcolumnName, idValue):
         update = f"UPDATE {table} SET {columnName} = '{value}' WHERE {table}.{IDcolumnName} = '{idValue}';"
         try:
-            cursor.execute(update)
+            res = cursor.execute(update)
             mydb.commit()
-            return True
+            return True if res == 1 else False
         except:
             return False
 
     def updateCellsByID(self, table, id, **columnsValues):
-        result = None
+        result = []
         columns = list(columnsValues.keys())
         values = list(columnsValues.values())
         for index in range(len(columns)):
             try:
-                self.updateACellByID(table, columns[index], values[index], id)
+                res = self.updateACellByID(table, columns[index], values[index], id)
                 mydb.commit()
-                result = True
+                result.append(True) if res else result.append(True)
             except:
-                result = False
-        return result
+                result = result.append(False)
+        return True in result
 
     def updateCellsByValue(self, table, IDcolumnName, idValue, **columnsValues):
-        result = None
+        result = []
         columns = list(columnsValues.keys())
         values = list(columnsValues.values())
         for index in range(len(columns)):
             try:
-                self.updateACellByValue(
+                res = self.updateACellByValue(
                     table, columns[index], values[index], IDcolumnName, idValue
                 )
                 mydb.commit()
-                result = True
+                result.append(True) if res else result.append(True)
             except:
-                result = False
-        return result
+                result = result.append(False)
+        return True in result
 
     def deleteCellByID(self, table, id):
         delete = f"DELETE FROM {table} WHERE {table}.id='{id}';"
         try:
-            cursor.execute(delete)
+            res = cursor.execute(delete)
             mydb.commit()
-            return True
+            return True if res == 1 else False
         except:
             return False
 
     def deleteCellByValue(self, table, IDcolumnName, idValue):
         delete = f"DELETE FROM {table} WHERE {table}.{IDcolumnName}='{idValue}';"
         try:
-            cursor.execute(delete)
+            res = cursor.execute(delete)
             mydb.commit()
-            return True
+            return True if res else False
         except:
             return False
 
@@ -157,18 +157,18 @@ class PostgreSQL:
     def clear(self, table):
         clear = f"TRUNCATE {table};"
         try:
-            cursor.execute(clear)
+            res = cursor.execute(clear)
             mydb.commit()
-            return True
+            return True if res == 1 else False
         except:
             return False
 
     def insert(self, table, *values):
         insert = f"INSERT INTO {table} VALUES {values};"
         try:
-            cursor.execute(insert)
+            res = cursor.execute(insert)
             mydb.commit()
-            return True
+            return True if res == 1 else False
         except:
             return False
 
@@ -223,64 +223,64 @@ class PostgreSQL:
             f"UPDATE {table} SET {columnName} = '{value}' WHERE {table}.id = '{id}';"
         )
         try:
-            cursor.execute(update)
+            res = cursor.execute(update)
             mydb.commit()
-            return True
+            return True if res == 1 else False
         except:
             return False
 
     def updateACellByValue(self, table, columnName, value, IDcolumnName, idValue):
         update = f"UPDATE {table} SET {columnName} = '{value}' WHERE {table}.{IDcolumnName} = '{idValue}';"
         try:
-            cursor.execute(update)
+            res = cursor.execute(update)
             mydb.commit()
-            return True
+            return True if res == 1 else False
         except:
             return False
 
     def updateCellsByID(self, table, id, **columnsValues):
-        result = None
+        result = []
         columns = list(columnsValues.keys())
         values = list(columnsValues.values())
         for index in range(len(columns)):
             try:
-                self.updateACellByID(table, columns[index], values[index], id)
+                res = self.updateACellByID(table, columns[index], values[index], id)
                 mydb.commit()
-                result = True
+                result.append(True) if res else result.append(True)
             except:
-                result = False
-        return result
+                result = result.append(False)
+        return True in result
 
     def updateCellsByValue(self, table, IDcolumnName, idValue, **columnsValues):
-        result = None
+        result = []
         columns = list(columnsValues.keys())
         values = list(columnsValues.values())
         for index in range(len(columns)):
             try:
-                self.updateACellByValue(
+                res = self.updateACellByValue(
                     table, columns[index], values[index], IDcolumnName, idValue
                 )
                 mydb.commit()
-                result = True
+                result.append(True) if res else result.append(True)
             except:
-                result = False
-        return result
+                result = result.append(False)
+        return True in result
 
     def deleteCellByID(self, table, id):
         delete = f"DELETE FROM {table} WHERE {table}.id='{id}';"
         try:
-            cursor.execute(delete)
+            res = cursor.execute(delete)
             mydb.commit()
-            return True
+            return True if res == 1 else False
         except:
             return False
 
     def deleteCellByValue(self, table, IDcolumnName, idValue):
         delete = f"DELETE FROM {table} WHERE {table}.{IDcolumnName}='{idValue}';"
         try:
-            cursor.execute(delete)
+            res = cursor.execute(delete)
             mydb.commit()
-            return True
+            return True if res else False
         except:
             return False
 
