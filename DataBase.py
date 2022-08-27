@@ -11,7 +11,7 @@ class MySQL:
         user (str): MySQL account user name Ex root
         passwd (str): MySQL account user password Ex 0000
         db (str): MySQL database name
-        port (int) [optional]: MySQL Server port (defult = 3306)
+        port (int) [optional]: MySQL Server port (default = 3306)
     """
 
     def __init__(self, host: str, user: str, passwd: str, db: str, port: int = 3306):
@@ -343,7 +343,7 @@ class PostgreSQL:
         user (str): PostgreSQL account user name Ex 'root'
         passwd (str): PostgreSQL account user password Ex '0000'
         db (str): PostgreSQL database name
-        port (int) [optional]: PostgreSQL Server port (defult = 5432)
+        port (int) [optional]: PostgreSQL Server port (default = 5432)
     """
 
     def __init__(self, host: str, user: str, passwd: str, db: str, port: int = 5432):
